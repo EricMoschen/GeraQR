@@ -1,0 +1,104 @@
+📌 Gerador de Etiquetas 
+
+🧾 Sobre o Sistema
+
+O Gerador de Etiquetas é uma página web construída em HTML, CSS e JavaScript que permite criar etiquetas personalizadas contendo:
+Descrição do item
+Dimensões
+Código do material
+Unidade de medida
+QR Code com as informações combinadas
+As etiquetas podem ser geradas dinamicamente e impressas diretamente pelo navegador.
+
+🎯 Objetivo
+
+Facilitar o preenchimento e criação rápida de etiquetas padronizadas com QR Code, visando identificação de materiais, organização de estoque e rastreabilidade.
+
+🚀 Funcionamento
+1. Entrada de Dados
+O usuário preenche o formulário com quatro informações:
+Campo	Descrição
+Descrição	Nome detalhado do item
+Dimensões	Medidas ou tamanho do produto
+Código	Identificação única
+Unidade	Unidade de consumo (ex: un, cx, pct, kg)
+
+2. Geração do QR Code
+Ao clicar em Adicionar, o sistema:
+Lê os campos digitados
+Monta uma string no formato:
+CODIGO;DESCRIÇÃO DIMENSÕES;UNIDADE
+Gera automaticamente o QR Code através do serviço:
+https://api.qrserver.com/v1/create-qr-code/
+
+3. Criação da Etiqueta
+
+Cada etiqueta é representada em uma tabela com:
+QR Code
+Descrição
+Dimensões
+Código
+As etiquetas aparecem dinamicamente no container principal e ficam prontas para visualização ou impressão.
+
+4. Limpar Etiquetas
+
+O botão Limpar todas remove todas as etiquetas geradas da página, após confirmação do usuário.
+
+🖨️ Impressão
+
+O sistema possui estilização especial com @media print:
+O formulário desaparece ao imprimir
+As etiquetas permanecem organizadas
+Quebras de página são evitadas
+Assim, o usuário pode gerar diversas etiquetas e imprimir todas de uma vez.
+
+🛠️ Tecnologias Utilizadas
+Tecnologia	Uso
+HTML5	Estrutura da página
+CSS3	Estilização visual e layout responsivo
+JavaScript	Geração dinâmica das etiquetas e QR Code
+QRServer API	Criação dos QR Codes
+
+📁 Estrutura do Código
+
+GeraQR
+  -  README.md
+  - index.html
+  - Documentacao.txt
+
+Principais Funções:
+adicionarEtiqueta()
+
+Captura os dados do formulário
+Gera a URL do QR Code
+Cria e insere uma etiqueta no container
+Limpa o formulário
+limpar()
+Confirma com o usuário
+Remove todas as etiquetas da tela
+
+🎨 Estilo e Design
+
+O sistema utiliza um tema leve com cores suaves:
+Fundo claro
+Cartões brancos com sombra
+Destaques em roxo/azul
+Layout preparado para impressão
+
+📌 Limitações e Possibilidades de Melhoria
+
+Não armazena etiquetas após recarregar a página
+Depende de internet para gerar QR Code
+Não importa dados em lote (ex: Excel)
+
+Melhorias sugeridas:
+
+Salvar etiquetas no navegador (localStorage)
+Exportar para PDF
+Importar planilha com múltiplas etiquetas
+Modo offline com biblioteca de QR interno
+
+✔️ Conclusão
+
+O Gerador de Etiquetas é uma ferramenta prática para criação e impressão rápida de etiquetas com QR Code,
+totalmente dentro do navegador e sem necessidade de instalação.
