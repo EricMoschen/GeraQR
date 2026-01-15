@@ -34,7 +34,8 @@
         border: 1px solid var(--border);
     }
 
-    form input {
+    form input,
+    form select {
         width: 100%;
         margin-bottom: 8px;
         padding: 8px;
@@ -137,7 +138,15 @@
     <input type="text" id="descricao" placeholder="Descrição" required>
     <input type="text" id="dimensoes" placeholder="Dimensões" required>
     <input type="text" id="codigo" placeholder="Código" required>
-    <input type="text" id="unidade" placeholder="Unidade (ex: un, cx, pc)" required>
+
+    <select id="unidade">
+        <option value="Unid.">Unid.</option>
+        <option value="Kg">Kg</option>
+        <option value="Lt">Lt</option>
+        <option value="Mt">Mt</option>
+        <option value="m²">m²</option>
+        <option value="m³">m³</option>
+    </select>
 
     <button type="button" onclick="adicionarEtiqueta()">Adicionar</button>
     <button type="button" id="clear" onclick="limpar()">Limpar todas</button>
@@ -152,17 +161,13 @@ function adicionarEtiqueta() {
     const cod = document.getElementById("codigo").value.trim();
     const uni = document.getElementById("unidade").value.trim();
 
-    
-
     const qrTexto = `${cod};${desc} ${dim};${uni}`;
     const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(qrTexto)}`;
 
-    const container = document.getElementById("container");
-
-    container.innerHTML += `
+    const etiquetaHTML = `
         <table class="etiqueta">
             <tr>
-                <td class="qr" rowspan="3">
+                <td class="qr" rowspan="4">
                     <img src="${qrURL}">
                 </td>
                 <td class="label">Descrição:</td>
@@ -173,11 +178,17 @@ function adicionarEtiqueta() {
                 <td>${dim}</td>
             </tr>
             <tr>
-                <td class="label">Cód:</td>
+                <td class="label">Código:</td>
                 <td>${cod}</td>
             </tr>
-        </table>`;
-        
+            <tr>
+                <td class="label">Unidade:</td>
+                <td>${uni}</td>
+            </tr>
+        </table>
+    `;
+
+    document.getElementById("container").innerHTML += etiquetaHTML;
     document.getElementById("formEtiqueta").reset();
 }
 
