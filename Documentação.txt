@@ -62,9 +62,10 @@ QRServer API	Criação dos QR Codes
 📁 Estrutura do Código
 
 GeraQR
-  -  README.md
-  - index.html
   - Documentacao.txt
+  - README.md
+  - index.html
+
 
 Principais Funções:
 adicionarEtiqueta()
